@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';"> -->
+    <title>VIVG</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css'> -->
+   
+    <script defer src='process/audio/processAudio.js'></script>
+    <script defer src='process/audio/processSpeech.js'></script>
+    <script defer src='process/video/generateFrame.js'></script>
+    <script defer src='process/video/buildVideo.js'></script>
+    <script defer src='process/handler.js'></script>
+    <script defer src='utils/log.js'></script>
+    <script defer src='render.js'></script>
+  </head>
+  <body>
+    <h1 class='main-title'>VIVG</h1>
+    <!-- <p class='subtitle'>(Vocal Image Video Generator)</p> -->
+    <button id='test-button'>Test Button</button>
+    <input id='query-field' type='text'/>
+    <div class='side-by-side'>
+      <section class='section'>
+        <!-- <h3 class='title'>Setup</h3> -->
+      <p>Select Google Credentials JSON</p>
+      <label class='file-input'>
+        Select JSON
+        <input id='google-creds' type='file' accept='json'/>
+      </label>
+      <p>Enter Google Storage Bucket URI</p>
+      <input id='bucket-name' type='text'>
+        <!-- <h3 class='title'>Video Details</h3> -->
+        <p>Video Title</p>
+        <input id='video-title' type='text'>
+        <p>Audio File</p>
+        <label class='file-input'>
+          Select File
+          <input id='audio-path' type='file'>
+        </label>
+        <p>Output Folder</p>
+        <button id='output-select' class='file-input'>Select Output Folder</button>
+        <button id='generate-button' class='big-button'>Generate Video</button>
+  </section>
+  <section>
+    <textarea id='console' class='console'>
+    </textarea>
+  </section>
+    </div>
+  </body>
+</html>
