@@ -3,6 +3,7 @@ const { ipcRenderer } = require("electron");
 // define elements
 const credsElement = document.getElementById("google-creds");
 const bucketName = document.getElementById("bucket-name");
+const chromeDriver = document.getElementById("chrome-driver");
 
 const videoTitle = document.getElementById("video-title");
 const audioPath = document.getElementById("audio-path");
@@ -14,6 +15,7 @@ const Logger = new Log();
 
 let creds = "";
 let bucket = "";
+let driver = "";
 let title = "";
 let audio = "";
 let output = "";
@@ -21,14 +23,14 @@ let output = "";
 const testButton = document.getElementById("test-button");
 const queryField = document.getElementById("query-field");
 
-testButton.addEventListener("click", () => {
-  Logger.Info("Testing audio processing");
+testButton.addEventListener("click", async () => {
   const query = queryField.value;
   const data = {
     word: query,
+    driver,
     output,
   };
-  GenerateFrame(data);
+  await GenerateFrame(data);
 });
 
 // get google creds
@@ -36,6 +38,12 @@ credsElement.onchange = () => {
   const path = credsElement.files[0];
   creds = path.path;
   Logger.Info("Google Credentials: " + path.path);
+};
+
+chromeDriver.onchange = () => {
+  const path = chromeDriver.files[0].path;
+  driver = path;
+  Logger.Info("Chrome Driver: " + driver);
 };
 
 audioPath.onchange = () => {

@@ -63,6 +63,7 @@ input[type="text"] {
   border: none;
 
   padding: 6px 12px;
+  padding-top: 10px;
   cursor: pointer;
 }
 
